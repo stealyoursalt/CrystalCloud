@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClashLike - 代理管理平台</title>
+    <style>
+        :root {
+            --royal-blue: #405DE6;
+            --blue: #5B51D8;
+            --purple: #833AB4;
+            --dark-pink: #C13584;
+            --purple-red: #E1306C;
+            --red: #FD1D1D;
+            --dark-orange: #F56040;
+            --orange: #F77737;
+            --yellow: #FCAF45;
+            --light-yellow: #FFDC80;
+            
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #fff;
+            --border-color: #e1e4e8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to bottom, var(--royal-blue), var(--purple), var(--dark-pink));
+            color: white;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            padding: 0 20px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .nav-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-item i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-active {
+            background-color: #4caf50;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--purple), var(--dark-pink));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, var(--dark-pink), var(--purple-red));
+        }
+        
+        .btn-secondary {
+            background-color: #f1f3f5;
+            color: #495057;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e9ecef;
+        }
+        
+        .proxy-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .proxy-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 15px;
+            border-left: 4px solid var(--royal-blue);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .proxy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 14px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">ClashLike</div>
+            <div class="nav-item active">
+                <i>📊</i> 仪表盘
+            </div>
+            <div class="nav-item">
+                <i>🔄</i> 代理
+            </div>
+            <div class="nav-item">
+                <i>📋</i> 规则
+            </div>
+            <div class="nav-item">
+                <i>🔔</i> 日志
+            </div>
+            <div class="nav-item">
+                <i>⚙️</i> 设置
+            </div>
+            <div style="flex: 1;"></div>
+            <div class="nav-item">
+                <i>❓</i> 帮助
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>仪表盘</h1>
+                <div class="status">
+                    <div class="status-indicator status-active"></div>
+                    <span>系统运行中</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">代理状态</div>
+                    <button class="btn btn-primary" id="importBtn">导入配置</button>
+                </div>
+                
+                <div class="proxy-list">
+                    <div class="proxy-card">
+                        <div class="proxy-header">
+                            <div class="proxy-name">香港 01</div>
+                            <div class="proxy-type">Shadowsocks</div>
+                        </div>
+                        <div class="proxy-details">
+                            <div>延迟: 120ms</div>
+                            <div>服务器: hk1.example.com</div>
+                        </div>
+                    </div>
+                    
+                    <div class="proxy-card">
+                        <div class="proxy-header">
+                            <div class="proxy-name">日本 01</div>
+                            <div class="proxy-type">VMess</div>
+                        </div>
+                        <div class="proxy-details">
+                            <div>延迟: 85ms</div>
+                            <div>服务器: jp1.example.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                ClashLike © 2025 - 版本 1.0.0
+                <button class="btn btn-secondary" id="checkUpdateBtn">检查更新</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 检查是否在Electron环境中
+        if (window.electronAPI) {
+            // 导入配置按钮
+            document.getElementById('importBtn').addEventListener('click', () => {
+                window.electronAPI.importConfig();
+            });
+            
+            // 检查更新按钮
+            document.getElementById('checkUpdateBtn').addEventListener('click', () => {
+                window.electronAPI.checkForUpdates();
+            });
+        }
+    </script>
+</body>
+</html>
