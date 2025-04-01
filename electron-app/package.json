@@ -31,3 +31,18 @@
     "electron-builder": "^23.0.0"
   }
 }
+"build": {
+  "appId": "com.yourname.clashlike",
+  "productName": "ClashLike",
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "stealyoursalt",
+      "repo": "CrystalCloud"
+    }
+  ],
+  "win": {
+    "target": ["nsis"],
+    "icon": "build/icon.ico"
+  }
+}
