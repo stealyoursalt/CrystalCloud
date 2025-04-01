@@ -1,0 +1,33 @@
+{
+  "name": "clashlike",
+  "version": "1.0.0",
+  "description": "A Clash-like proxy management platform",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.yourname.clashlike",
+    "productName": "ClashLike",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "stealyoursalt",
+        "repo": "CrystalCloud"
+      }
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "build/icon.ico"
+    }
+  },
+  "dependencies": {
+    "electron-updater": "^5.0.0"
+  },
+  "devDependencies": {
+    "electron": "^20.0.0",
+    "electron-builder": "^23.0.0"
+  }
+}
